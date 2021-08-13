@@ -1,3 +1,9 @@
 # Algorithm Problem Solving with Python
-  - language : python, (javascript will be coming soon...)
-  - problem source : baekjoon, (programmers will be comming soon...)
+
+## Information
+  - Language : python
+  - Problem Source : [baekjoon](https://www.acmicpc.net)
+
+## Structure
+  - PS in Algorithm Study by date
+  - PS by problem number
