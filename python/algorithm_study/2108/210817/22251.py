@@ -11,10 +11,9 @@ def sol():
     ]
     # 현재 위치를 리스트로 만든다
     curr = []
-    X_copy = X
-    while X_copy:
-        curr.append(X_copy % 10)
-        X_copy //= 10
+    while X:
+        curr.append(X % 10)
+        X //= 10
     # K 자리수까지 0으로 채운다
     if len(curr) < K:
         curr.extend([0 for _ in range(K - len(curr))])
@@ -36,7 +35,7 @@ def sol():
             ch_cnt = 0
             # 바이너리 값을 카운트한다
             while ch_sgmts:
-                ch_cnt += ch_sgmts % 2
+                ch_cnt += ch_sgmts & 1
                 ch_sgmts >>= 1
             # 반전할 세그먼트 개수가 유효한지 확인한다
             if cnt >= ch_cnt:
