@@ -8,19 +8,20 @@ def DFS(n):
     ni, nj = targets[n]
     for num in range(1, 10):
         # 해당 좌표의 행, 열, 스퀘어에 같은 숫자가 있는지 확인
-        if ch_y[ni][num] == False and ch_x[nj][num] == False and ch_s[ni // 3 * 3 + nj // 3][num] == False:
+        if not(ch_y[ni][num] or ch_x[nj][num] or ch_s[ni // 3 * 3 + nj // 3][num]):
             ch_y[ni][num] = ch_x[nj][num] = ch_s[ni // 3 * 3 + nj // 3][num] = True
             sudoku[ni][nj] = num
             # 종료 시 다음 탐색을 안하기 위해 계속 리턴함
             if DFS(n + 1) == True: return True
             sudoku[ni][nj] = 0
             ch_y[ni][num] = ch_x[nj][num] = ch_s[ni // 3 * 3 + nj // 3][num] = False
+            
 sudoku = [list(map(int, input().rstrip())) for _ in range(9)]
 targets = []
 # 해당 좌표의 행, 열, 스퀘어의 숫자가 있는지 확인 위한 배열
-ch_y = [[False for _ in range(10)] for _ in range(9)]
-ch_x = [[False for _ in range(10)] for _ in range(9)]
-ch_s = [[False for _ in range(10)] for _ in range(9)]
+ch_y = [[False * 10] for _ in range(9)]
+ch_x = [[False * 10] for _ in range(9)]
+ch_s = [[False * 10] for _ in range(9)]
 for i in range(9):
     for j in range(9):
         t = sudoku[i][j]
