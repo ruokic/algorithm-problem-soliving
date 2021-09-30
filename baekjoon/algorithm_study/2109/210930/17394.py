@@ -28,16 +28,19 @@ def sol():
             n, cnt = queue.popleft()
             if n in primes:
                 return cnt
-            visited[n // 32] |= 1 << (n % 32)
             if primes[0] <= n:
                 if not (visited[(n // 3) // 32] & (1 << ((n // 3) % 32))):
+                    visited[(n // 3) // 32] |= 1 << (n // 3) % 32
                     queue.append([n // 3, cnt + 1])
                 if not (visited[(n // 2) // 32] & (1 << ((n // 2) % 32))):
+                    visited[(n // 2) // 32] |= 1 << (n // 2) % 32
                     queue.append([n // 2, cnt + 1])
                 if not (visited[(n - 1) // 32] & (1 << ((n - 1) % 32))):
+                    visited[(n - 1) // 32] |= 1 << (n - 1) % 32
                     queue.append([n - 1, cnt + 1])
             if 0 <= n <= primes[-1]:
                 if not (visited[(n + 1) // 32] & (1 << ((n + 1) % 32))):
+                    visited[(n + 1) // 32] |= 1 << (n + 1) % 32
                     queue.append([n + 1, cnt + 1])
 T = int(input())
 for _ in range(T):
